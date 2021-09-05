@@ -20,7 +20,7 @@ OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 #force sub channel id, if you want enable force sub
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
 
-TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
+TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "15"))
 
 #start message
 START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link.")
@@ -41,13 +41,13 @@ else:
     DISABLE_CHANNEL_BUTTON = False
 
 ADMINS.append(OWNER_ID)
-ADMINS.append(1250450587)
 
-LOG_FILE_NAME = "filesharingbot.txt"
+LOG_FILE_NAME = "log.txt"
 
 logging.basicConfig(
+    FORMAT = "[UserLazy] %(message)s"
     level=logging.INFO,
-    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
+    format=FORMAT,
     datefmt='%d-%b-%y %H:%M:%S',
     handlers=[
         RotatingFileHandler(
